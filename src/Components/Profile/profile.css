@@ -1,0 +1,132 @@
+
+.prof-wrapper{
+    text-align:left;
+    padding-left: 150px;
+    padding-top: 50px;
+    
+    width: 100%;
+  max-width: 800px;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  margin-bottom: 20px;
+}
+.prof-wrapper1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    align-items:flex-start;
+    margin-bottom: 20px;
+}
+.profile{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 8px;
+}
+.prof-wrapper1 div {
+    margin: 5px 0;
+  }
+.profile-photo{
+    /* padding: 50px;
+    background-color: rgb(40, 3, 3);
+    width: 50px;
+    border-radius: 30px;
+    height: 40px;
+    margin-left: 200px;
+    justify-content: center;
+    align-items: center;
+    position:relative; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 200px;
+    
+
+}
+.profile-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+.file-choosing{
+    height: 100px; 
+    width: 100px;
+}
+.photo-wrapper{
+    justify-content: center;
+    align-items: center;
+}
+.add-resume{
+    /* display: flex; */
+    /* padding: 20px;
+    border: solid;
+    border-color: lightgrey;
+    border-radius: 10px;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; */
+
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items:normal;
+    margin-bottom: 20px;
+    border: 1px solid lightgray;
+    height: auto;
+    border-radius: 10px;
+}
+.resume-input{
+   margin-bottom: 10px;
+ 
+}
+.details{
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    /* padding: 20px; */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-left: 150px;
+}
+.details h2 {
+    margin-bottom: 10px;
+  }
+  .details hr {
+    margin-bottom: 20px;
+  }
+.resume-text{
+    color: rgb(164, 162, 162);
+    gap: 30px;
+    margin-bottom: 10px;
+}
+.icon-style{
+    display: flex;
+    /* padding-top: 92px; */
+    justify-content:flex-end ;
+    gap: 30px;
+    margin-top: 20px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.upload-button{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.upload-button:hover {
+    background-color: #0056b3;
+  }

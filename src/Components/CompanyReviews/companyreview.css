@@ -1,0 +1,19 @@
+.review-ip{
+    width: 400px;
+    height: 50px;
+}
+
+.button-ip{
+    background-color: rgb(22, 26, 97);
+    height: 40px;
+    color: white;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.input-wrap2{
+    gap: 10px;
+}
+.review-wrapper{
+    margin-left: 100px;
+}

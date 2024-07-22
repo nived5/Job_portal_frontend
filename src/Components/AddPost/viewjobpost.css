@@ -1,0 +1,18 @@
+.post-wrapper{
+    display: flex;
+    flex-direction:column;
+  
+    /* gap: 30px; */
+}
+
+.singlepost{
+    border: solid black;
+    display: flex;
+    flex-direction: column;
+    border-color: lightgrey;
+    
+}
+
+.font-style{
+    color: rgb(24, 24, 82);
+}

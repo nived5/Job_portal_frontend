@@ -1,0 +1,47 @@
+.form-wrapper{
+max-width: 600px;
+margin: 20px auto;
+padding: 20px;
+border:1px solid #ccc;
+border-radius: 5px;
+background-color: #f9f9f9;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h3, h4 {
+    margin: 10px 0;
+    color: #333;
+  }
+
+  .input{
+    width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  }
+
+  .addmore{
+    color: darkblue;
+    cursor: pointer;
+    display: flex;
+    
+  }
+
+  .qualification-button{
+    display: flex;
+    justify-content: center;
+
+  }
+  .qualification-button button{
+    /* background-color: rgb(34, 38, 125); */
+    width: 50%;
+    padding: 10px;
+    background-color: #1a2169;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+  }

@@ -1,0 +1,44 @@
+.salary-wrapper{
+    background-color: #161651;
+    height: 120px;
+    border-bottom-right-radius: 40px;
+    display: flex;
+justify-content:first baseline;
+align-items: center;
+}
+
+.inside-wrapper{
+    background-color: white;
+    display: flex;
+    width: 800px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    border-radius: 10px;
+    
+}
+
+.font-style3{
+    color: white;
+
+}
+
+.input-salary{
+
+    width: 350px;
+    border-radius: 10px;
+}
+
+.search-button{
+    background-color: #161651;
+    color: white;
+    justify-content: center;
+    align-items: center;
+
+}
+.button4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
