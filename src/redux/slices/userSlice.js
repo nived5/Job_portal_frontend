@@ -8,6 +8,7 @@ export const initialState = {
   email: "",
   phoneno: "",
   account_type: "",
+  is_blocked:false
 };
 const userSlice = createSlice({
   name: "user",
@@ -22,6 +23,7 @@ const userSlice = createSlice({
       state.email = action.payload.email;
       state.phoneno = action.payload.phoneno;
       state.account_type = action.payload.account_type
+      state.is_blocked = action.payload.is_blocked
     },
   },
 });

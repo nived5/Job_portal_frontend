@@ -11,6 +11,7 @@ function Profile() {
   const [profilePicture, setProfilePicture] = useState([]);
   const [uploadedFile, setUploadedFile] = useState([]);
   const [getImage, setGetImage] = useState([]);
+  const [qualification,setQualification] = useState([])
   const { id } = useParams();
   const handleFileChange = (event) => {
     setProfilePicture(event.target.files[0]);
@@ -36,6 +37,13 @@ function Profile() {
       .get(`http://127.0.0.1:8000/profile_photo_add"${id}`)
       .then((res) => setGetImage(res.data));
   });
+
+  useEffect(()=>{
+    axios
+    .get("http://127.0.0.1:8000/AddQualification")
+    .then((res)=>{setQualification(res.data)})
+    .catch((err)=>console.log(err))
+  },[])
 
   return (
     <>
@@ -90,6 +98,18 @@ function Profile() {
             >
               <i className="fa-solid fa-arrow-right"></i>
             </div>
+          </div>
+          <div className="qualfication">
+            <h3>Your Qualifications and skills</h3>
+            {qualification.map((ele,index)=>{
+              return(<div key={index}>
+                
+               <div>higher secondary:{ele.higher_secondary}</div> 
+               <div>Degree:{ele.degree}</div> 
+               <div>Skills:{ele.skills}</div> 
+              </div>)
+              
+            })}
           </div>
         </div>
       ) : (

@@ -56,11 +56,7 @@ const navigate = useNavigate()
         <div className="image2-wrapper">
           <div>
             <h2>Post your jobs here...</h2>
-            <img
-              src="/images/Illustration3.jpg"
-              alt="image"
-              className="image2-styling"
-            />
+            
           </div>
           <h3>
             You haven't posted a job before, so you'll need to create an

@@ -40,10 +40,17 @@ function SavedPost() {
       {savedPosts.length === 0 ? (
         <p>No saved jobs yet</p>
       ) : (
+        // <div>
+        //   {savedPosts.map((post, index) => (
+            
+        //     <div key={index}>{post.job_title}</div>
+        //   ))}
+        // </div>
         <div>
-          {savedPosts.map((post, index) => (
-            <div key={index}>{post.job_title}</div>
-          ))}
+          {savedPosts.map((post,index)=>{
+            return( <div key={index}>{post.jobs}</div>)
+           
+          })}
         </div>
       )}
     </div>

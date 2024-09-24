@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import "./navbar.css";
 import { useNavigate } from "react-router-dom";
@@ -6,42 +8,45 @@ import { initialState, updateUser } from "../../redux/slices/userSlice";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
-  // const dispatch = useDispatch()
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   const navigate = useNavigate();
   return (
-    <nav>
-      {user.account_type == "Job seeker" ? (
-        <div className="nav-wrapper">
-          <div className="logo-wrapper">
-            <img src="/images/logo.jpg" alt="" className="logo" />
+    <nav className="nav-wrapper">
+      <div className="logo-wrapper">
+        <img src="/images/logo.jpg" alt="" className="logo" />
+        <h1 className="aclonica-regular">Hirehub</h1>
+      </div>
 
-            <h1 className="aclonica-regular ">Hirehub</h1>
-          </div>
+      {/* Hamburger Menu for Mobile View */}
+      <div className="hamburger" onClick={toggleMobileMenu}>
+        <i className="fa-solid fa-bars"></i>
+      </div>
 
-          <div className="list-items">
-            <ul className="wrapper">
-              <li onClick={() => navigate("/")}>
-                <h3>Home</h3>
-              </li>
-
-              <li onClick={() => navigate("/companyreviews")}>
-                <h3>CompanyReviews</h3>
-              </li>
-
-              {/* <li onClick={() => navigate("/salaryguide")}>
-                <h3>Salary Guide</h3>
-              </li> */}
-            </ul>
-          </div>
-
-          {user.username ? (
+      <div className={`nav-items ${mobileMenuOpen ? "mobile-menu-open" : ""}`}>
+        {user.account_type === "Job seeker" ? (
+          <>
             <div>
+              {" "}
+              <ul className="list-items">
+                <li onClick={() => navigate("/")}>Home</li>
+                <li onClick={() => navigate("/companyreviews")}>
+                  Company Details
+                </li>
+              </ul>
+            </div>
+
+            {user.username ? (
               <ul className="icons">
                 <div className="styling">
                   <li>
@@ -54,9 +59,9 @@ function NavBar() {
                   </li>
                 </div>
                 <div className="styling">
-                  <div className=" dropdown">
+                  <div className="dropdown">
                     <li onClick={handleToggle}>
-                      <i className="fa-solid fa-user  "></i>
+                      <i className="fa-solid fa-user"></i>
                     </li>
                     {isOpen && (
                       <div className="dropdown-menu">
@@ -66,26 +71,24 @@ function NavBar() {
                         >
                           Profile
                         </button>
-                        <button className="dropdown-item" onClick={()=>navigate('/savedjobs')}>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => navigate("/savedjobs")}
+                        >
                           Saved jobs
                         </button>
                         <button
-                          className="dropdown-item logout_button"
-                          onClick={() => {
-                            dispatch(updateUser(initialState))
-                            navigate('/loginpage')
-                          }}
+                          className="dropdown-item"
+                          onClick={() => navigate("/viewappliedjobs")}
                         >
-                          LogOut
+                          Applied Jobs
                         </button>
                       </div>
                     )}
                   </div>
                 </div>
               </ul>
-            </div>
-          ) : (
-            <div>
+            ) : (
               <ul className="signin-wrapper">
                 <li>
                   <button
@@ -96,97 +99,174 @@ function NavBar() {
                   </button>
                 </li>
               </ul>
+            )}
+
+            <div className="logout-div">
+              <button
+                className="logout-button"
+                onClick={() => {
+                  dispatch(updateUser(initialState));
+                  navigate("/loginpage");
+                }}
+              >
+                <i className="fa-solid fa-right-from-bracket"></i>
+              </button>
             </div>
-          )}
-          <div>
-            <li
-              onClick={() => navigate("/profile")}
-              className="employer2"
-            >
-              {/* <h3>Employers/Post Job</h3> */}
-              <div className="text-wrapper">
-                <div
-                  // className="font-styling1"
-                  // onClick={() => navigate("/profile")}
-                >
-                  <h3 className="resume">Post Your Resume </h3>
+          </>
+        ) : user.account_type === "Employer" ? (
+          <>
+            <ul className="list-items">
+              <li onClick={() => navigate("/")}>Home</li>
+            </ul>
+
+            {user.username ? (
+              <ul className="icons">
+                <div className="styling">
+                  <li>
+                    <i className="fa-regular fa-message"></i>
+                  </li>
                 </div>
-
-                {/* <div className="font-styling2">
-                  <h3> It takes only a few seconds</h3>
-                </div> */}
-              </div>
-            </li>
-          </div>
-        </div>
-      ) : (
-        <div className="nav-wrapper">
-          <div className="logo-wrapper">
-            <img src="/images/logo.jpg" alt="" className="logo" />
-
-            <h1>HIRE HUB</h1>
-          </div>
-
-          <div className="list-items">
-            <ul className="wrapper">
-              <li onClick={() => navigate("/")}>
-                <h3>Home</h3>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <ul className="icons">
-              <div className="styling">
-                <li>
-                  <i className="fa-regular fa-message"></i>
-                </li>
-              </div >
-              <div className="styling">
-                <li>
-                  <i className="fa-solid fa-bell"></i>
-                </li>
-              </div>
-              <div className="styling">
-              <div className=" dropdown">
-                <li onClick={handleToggle}>
-                  <i className="fa-solid fa-user  "></i>
-                </li>
-                {isOpen && (
-                  <div className="dropdown-menu">
-                    <button
-                      className="dropdown-item"
-                      onClick={() => navigate("/profile")}
-                    >
-                      Profile
-                    </button>
-                    <button className="dropdown-item" onClick={()=>navigate('/viewjobpost')}>Added jobs</button>
-                    <button
-                      className="dropdown-item logout_button"
-                      onClick={() => {
-                        dispatch(updateUser(initialState))
-                        navigate('/loginpage')
-                      }}
-                    >
-                      LogOut
-                    </button>
-                   
+                <div className="styling">
+                  <li>
+                    <i className="fa-solid fa-bell"></i>
+                  </li>
+                </div>
+                <div className="styling">
+                  <div className="dropdown">
+                    <li onClick={() => navigate("/profile")}>
+                      <i className="fa-solid fa-user"></i>
+                    </li>
+                    {isOpen && (
+                      <div className="dropdown-menu">
+                        <button
+                          className="dropdown-item"
+                          onClick={() => navigate("/profile")}
+                        >
+                          Profile
+                        </button>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => navigate("/viewjobpost")}
+                        >
+                          Added jobs
+                        </button>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => navigate("/companydetails")}
+                        >
+                          Add company Details
+                        </button>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-              </div>
+                </div>
+              </ul>
+            ) : (
+              <ul className="signin-wrapper">
+                <li>
+                  <button
+                    className="button-style"
+                    onClick={() => navigate("/loginpage")}
+                  >
+                    <h2>Signin</h2>
+                  </button>
+                </li>
+              </ul>
+            )}
+
+            <div className="logout-div">
+              <button
+                className="logout-button"
+                onClick={() => {
+                  dispatch(updateUser(initialState));
+                  navigate("/loginpage");
+                }}
+              >
+                <i className="fa-solid fa-right-from-bracket"></i>
+              </button>
+            </div>
+          </>
+        ) : user.account_type === "admin" ? (
+          <>
+            <ul className="list-items">
+              <li onClick={() => navigate("/adminpage")}>Home</li>
             </ul>
-          </div>
-          <div>
-            <li
-              onClick={() => navigate("/employeraccount")}
-              className="employer2"
-            >
-              <h3>Employers/Post Job</h3>
-            </li>
-          </div>
-        </div>
-        
-      )}
+
+            {user.username ? (
+              <ul className="icons">
+                <div className="styling">
+                  <li>
+                    <i className="fa-regular fa-message"></i>
+                  </li>
+                </div>
+                <div className="styling">
+                  <li>
+                    <i className="fa-solid fa-bell"></i>
+                  </li>
+                </div>
+                <div className="styling">
+                  <div className="dropdown">
+                    <li onClick={handleToggle}>
+                      <i className="fa-solid fa-user"></i>
+                    </li>
+                    {isOpen && (
+                      <div className="dropdown-menu">
+                        <button
+                          className="dropdown-item"
+                          onClick={() => navigate("/managerlist")}
+                        >
+                          Manager List
+                        </button>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => navigate("/adminapplliedjobslist")}
+                        >
+                          Applied jobs
+                        </button>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => navigate("/jobseekerlist")}
+                        >
+                          Job Seeker List
+                        </button>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => navigate("/joblistadmin")}
+                        >
+                          Job Post List
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </ul>
+            ) : (
+              <ul className="signin-wrapper">
+                <li>
+                  <button
+                    className="button-style"
+                    onClick={() => navigate("/loginpage")}
+                  >
+                    <h2>Signin</h2>
+                  </button>
+                </li>
+              </ul>
+            )}
+
+            <div className="logout-div">
+              <button
+                className="logout-button"
+                onClick={() => {
+                  dispatch(updateUser(initialState));
+                  navigate("/loginpage");
+                }}
+              >
+                <i className="fa-solid fa-right-from-bracket"></i>
+              </button>
+            </div>
+          </>
+        ) : null}
+      </div>
     </nav>
   );
 }

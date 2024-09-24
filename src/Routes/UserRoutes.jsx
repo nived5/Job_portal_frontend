@@ -19,6 +19,15 @@ import DetailedPostViewPage from '../pages/DetailedPostViewPage'
 import ApplyForJobPage from '../pages/ApplyForJobPage'
 import SavedPostpage from '../pages/SavedPostpage'
 import SearchPage from '../pages/searchPage'
+import AppliedJobsViewPage from '../pages/AppliedJobsViewPage'
+import AppliedJobsEmployerViewPage from '../pages/AppliedJobsEmployerViewPage'
+import CompanyDetailsPage from '../pages/CompanyDetailsPage'
+import AdminPage from '../pages/AdminPage'
+import AppliedJobsListAdminView from '../pages/AppliedJobsListAdminView'
+import ManagerlistPage from '../pages/ManagerlistPage'
+import AdminJobseekerListPage from '../pages/AdminJobseekerListPage'
+import AdminJobPostListPage from '../pages/AdminJobPostListPage'
+import EmployerDashPage from '../pages/EmployerDashPage'
 
 
 
@@ -40,6 +49,15 @@ function UserRoutes() {
         <Route path='/Applyforjobs/:id' element={<ApplyForJobPage/>}/>
         <Route path='/savedjobs' element={<SavedPostpage/>}/>
         <Route path='/searchjobs' element={<SearchPage/>}></Route>
+        <Route path='/viewappliedjobs' element={<AppliedJobsViewPage/>}/>
+        <Route path='/emplapplied/:id' element={<AppliedJobsEmployerViewPage/>}/>
+        <Route path='/companydetails' element={<CompanyDetailsPage/>}/>
+        <Route path='/adminpage' element={<AdminPage/>}/>
+        <Route path='/adminapplliedjobslist' element={<AppliedJobsListAdminView/>}/>
+        <Route path='/managerlist' element={<ManagerlistPage/>}/>
+        <Route path='/jobseekerlist' element={<AdminJobseekerListPage/>}/>
+        <Route path='/joblistadmin' element={<AdminJobPostListPage/>}/>
+        <Route path='/employerdash' element={<EmployerDashPage/>}/>
     </Routes>
   )
 }

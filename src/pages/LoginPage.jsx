@@ -5,7 +5,7 @@ import Login from '../Components/Login/Login'
 function LoginPage() {
   return (
     <>
-    <NavBar/>
+    {/* <NavBar/> */}
     <Login/>
 
     </>

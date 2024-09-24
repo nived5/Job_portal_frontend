@@ -1,5 +1,5 @@
 .image2-styling{
-width: 300px;
+width: 100%;
 height: 140px;
 /* margin-left: 400px; */
 padding-left: 470px;
@@ -10,11 +10,11 @@ padding-left: 470px;
 .image2-wrapper{
 
     background-color:white;
-    height: 250px;
-    width: 800px;
+    height: 100%;
+    width: 80%;
     position: relative;
     align-items: center;
-    border: 1px solid;
+    
     border-radius: 10px;
 
     
